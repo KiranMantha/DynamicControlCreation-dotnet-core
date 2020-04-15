@@ -1,0 +1,31 @@
+﻿@model DynamicControlCreation.Models.TemplatesAndParameters.TemplateParameters
+<style>
+    #tAvailableValues {
+        width: 500px;
+    }
+</style>
+<label>Available Values</label>
+<div id="dAvailableValues">
+<table id="tAvailableValues">
+<tr>
+<td>Label</td>
+<td>Value</td>
+<td>Display Index</td>
+<td>Action</td>
+</tr>
+<tbody>
+@if (Model.ParameterValues.Count == 0)
+{ 
+    <tr>
+        <td colspan="4">No Records Available</td>
+    </tr>
+}
+else
+{
+    @Html.EditorFor(m=>m.ParameterValues)
+}
+</tbody>
+</table>
+</div>
+<a id="AddAvailableValues" asp-action="AddAvailableValues">Add Available Value</a>
+@* @Html.ActionLink("Add Available Value", "AddAvailableValues", null, new {  }) *@

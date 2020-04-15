@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@using DynamicControlCreation.Models.TemplatesAndParameters;
+@using AndreyKurdiumov.AspNetCore.Helpers;
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+@model List<Template>
+    <style>
+        .tblTemplates {
+            width: 500px;
+        }
+    </style>
+<h2>Template Controller Index</h2>
+<a href='@Url.Action("Create")'>Create Template</a><br />
+
+    @{
+        WebGrid grid = new WebGrid(HttpContextAccessor, Model);
+    }
+
+    @grid.GetHtml(columns: grid.Columns(
+        grid.Column("TemplateID", "TemplateID"),
+        grid.Column("Name", "Template Name"),
+        grid.Column("View", "Action", format: (item) => Html.ActionLink("Edit", "Create", new { id = item.TemplateID }, new { @class = "aclink" }))
+    ), tableStyle: "tblTemplates")

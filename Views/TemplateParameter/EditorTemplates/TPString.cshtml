@@ -1,0 +1,14 @@
+﻿@using DynamicControlCreation.Models.TemplatesAndParameters;
+@using System.Linq;
+@model List<string>
+@{
+    var ViewModel = (TemplateParameters)ViewData[typeof(TemplateParameters).Name];
+}
+@if (ViewModel.AvailableValues.Count > 0)
+{
+    @Html.DropDownList(ViewModel.Name, (IEnumerable<SelectListItem>)ViewModel.AvailableValues)    
+}
+else
+{ 
+    @Html.TextBox(ViewModel.Name, Model.FirstOrDefault())
+}

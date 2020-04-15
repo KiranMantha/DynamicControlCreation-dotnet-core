@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "_bool";
+}
+
+@model List<string>
+@{
+  bool? value = null;
+  bool result;
+  if (bool.TryParse(Model.FirstOrDefault(), out result)) 
+  {
+      value = result;
+  }
+  var selectlist = new List<SelectListItem>{
+  new SelectListItem{Text="Select",Value=""},
+  new SelectListItem{Text="True",Value=bool.TrueString},
+  new SelectListItem{Text="False",Value=bool.FalseString},
+  };
+
+  @* selectlist.Where(x => bool.Parse(x.Value) == value).First().Selected = true; *@
+ }
+
+ @Html.DropDownList("",selectlist)

@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@using DynamicControlCreation.Models.TemplatesAndParameters;
+@model TemplateParameters
+@{
+    ViewData[typeof(TemplateParameters).Name] = Model;
+    string editorview = Model.AllowMultiple ? "TPMultiple" : "TP" + (TemplateParameterType)Model.Type;
+}
+
+<h2>Index</h2>
+@Html.LabelFor(m=>m.TemplateID) : @Html.Label(Model.TemplateID.ToString())<br/>
+@Html.LabelFor(m=>m.Name) : @Html.Label(Model.Name)<br/>
+@Html.LabelFor(m=>m.Value) : @Html.EditorFor(m => m.Values, editorview)
+<div>
+    <a asp-controller="Template" asp-action="Create" asp-route-ID="@Model.TemplateID">< Back</a>
+</div>

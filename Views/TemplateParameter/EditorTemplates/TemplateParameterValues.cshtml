@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "TemplateParameterValues";
+}
+@model DynamicControlCreation.Models.TemplatesAndParameters.TemplateParameterValues
+@{
+    var hidedeletedvalue = Model.Deleted ? "display:none" : "";
+}
+<tr style="@hidedeletedvalue">
+<td>
+@Html.HiddenFor(m => m.TemplateParameterID)
+@Html.EditorFor(m=>m.Label)
+</td>
+<td>
+@Html.EditorFor(m=>m.Value)
+</td>
+<td>
+@Html.EditorFor(m=>m.DisplayIndex)
+</td>
+<td>
+@Html.HiddenFor(m => m.Deleted, new {@class="deleted-value" })
+<a href="#" class="remove-value">Remove</a>
+</td>
+</tr>

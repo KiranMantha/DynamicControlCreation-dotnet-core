@@ -1,0 +1,29 @@
+﻿@model DynamicControlCreation.Models.TemplatesAndParameters.TemplateParameters
+<style>
+    #tDefaultValues {
+        width: 500px;
+    }
+</style>
+<label>Default Values</label>
+<div id="dDefaultValues">
+<table id="tDefaultValues">
+<tr>
+<td>Value</td>
+<td>Action</td>
+</tr>
+<tbody>
+@if (Model.ParameterDefaults.Count == 0)
+{ 
+    <tr>
+        <td colspan="4">No Records Available</td>
+    </tr>
+}
+else
+{
+    @Html.EditorFor(m=>m.ParameterDefaults)
+}
+</tbody>
+</table>
+</div>
+<a id="AddDefaultValues" asp-action="AddDefaultValues">Add Default Value</a>
+@* @Html.ActionLink("Add Default Value", "AddDefaultValues", null, new { id = "AddDefaultValues" }) *@

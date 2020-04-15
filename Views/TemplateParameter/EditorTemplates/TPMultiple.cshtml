@@ -1,0 +1,5 @@
+﻿@using DynamicControlCreation.Models.TemplatesAndParameters;
+@{
+    var ViewModel = (TemplateParameters)ViewData[typeof(TemplateParameters).Name];
+}
+@Html.ListBox("", (IEnumerable<SelectListItem>)ViewModel.AvailableValues)    
