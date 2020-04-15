@@ -146,16 +146,17 @@ namespace DynamicControlCreation.Controllers
     [HttpPost]
     public ActionResult AddDefaultValues(TemplateParameters _TemplateParameters)
     {
+      ActionResult _view = View();
       if ((_TemplateParameters.ParameterDefaults.Count == 0) || (_TemplateParameters.ParameterDefaults.Count > 0 && _TemplateParameters.AllowMultiple == true))
       {
         _TemplateParameters.ParameterDefaults.Add(new TemplateParameterDefaults() { TemplateParameterID = _TemplateParameters.TemplateParameterID });
-        return View("Create", _TemplateParameters);
+        _view = View("Create", _TemplateParameters);
       }
       else
       {
-        return Content("100");
+        _view = Content("100");
       }
-      return View();
+      return _view;
     }
   }
 }
